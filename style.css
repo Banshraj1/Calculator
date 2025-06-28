@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(212, 195, 195);
+  color: white;
+}
+
+.container {
+  border: 2px solid red;
+  height: 600px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen {
+  border: 2px solid white;
+  height: 20%;
+  width: 100%;
+  border-radius: 15px;
+  /* background-color:   rgb(126, 37, 37); */
+}
+.screen:hover{
+  border: none;
+}
+.input {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(212, 195, 195);
+  border-radius: 15px;
+  border: none;
+  font-size: larger;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 20%;
+  margin-top: 10px;
+}
+
+.btn {
+  height: 100%;
+  width: 100%;
+  font-size: 40px;
+  border: none;
+  background: transparent;
+  background-color: black;
+  color: white;
+  border-radius: 15px;
+  /* border-radius: 15px; */
+}
+
+.number {
+  height: 100%;
+  width: 23%;
+  border: 2px solid rgb(235, 12, 12);
+  border-radius: 15px;
+}
+
+.box {
+  padding: 30px;
+  /* border: 1px solid black; */
+  font-size: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 500px;
+  height: 500px;
+}
+
+.animate {
+  position: relative;
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.animate::before,
+.animate::after {
+  content: "";
+  background: conic-gradient(from var(--angle), red, blue);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  border-radius: 15px;
+  padding: 3px;
+  animation: spin 2s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+}
+@keyframes spin {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+.animate:hover {
+  scale: 1.01;
+}
+.animate:hover::before,
+.animate:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
