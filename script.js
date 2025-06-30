@@ -23,25 +23,17 @@ let arr=new Array(buttons.length);
 for (let i=0;i<16;i++) {
     arr[i]=buttons[i].innerHTML;
 }
-// console.log(arr);
 
-const checkval=(array,key)=>{
-    let val=0;
-     for(element of array){
-        console.log("yes boss")
-        if(element==key){
-            val=1;
-        }
-        if(val===1){
-            return true;
-        }else{
-            return false;
-        }
+console.dir(str)
+function cut(string){
+    if(typeof(string==="number")){
+        return toString(string).slice(0,-1);
+    }else{
+        return string.slice(0,-1);
     }
-    // return false;
 }
 ipt.addEventListener("keyup",(e)=>{
-    console.log(e)
+    // console.log(e)
     if(e.key==="Enter"||e.key==="="){
         str=eval(str);
         ipt.value=str;
@@ -51,16 +43,16 @@ ipt.addEventListener("keyup",(e)=>{
         ipt.value=str;
     }
     else if(e.key==="Backspace"){
-     console.log("back");
-     str=str.slice(0,str.length-1);
+     str=cut(str);
      ipt.value=str;
+     console.log(str);
     }else if(arr.includes(e.key)){
         str=str+e.key;
         ipt.value=str;
-        console.log("true");
+        // console.log("true");
         
     }else{
-        ipt.value="";
+        return ;
     }
 })
 
